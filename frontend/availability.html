@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Solar Availability - Solar Energy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Solar</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="availability.html">Check Availability</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        🛒 Cart
+                        <span class="cart-badge" id="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <section class="availability-section">
+        <div class="availability-card">
+            <h2 class="mb-2">Check Your Solar Potential</h2>
+            <p class="mb-4" style="color: var(--text-secondary);">
+                Enter your location to discover your solar energy potential and estimated savings.
+            </p>
+
+            <form id="availability-form">
+                <div class="input-group">
+                    <label for="location-input">City or ZIP Code</label>
+                    <input 
+                        type="text" 
+                        id="location-input" 
+                        placeholder="e.g., San Francisco, CA or 94102"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full" id="check-btn">
+                    Check Availability
+                </button>
+            </form>
+
+            
+            <div id="loading-state" class="loading-state" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Fetching solar data for your location...</p>
+            </div>
+
+            
+            <div id="error-state" class="error-state" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h3>Unable to fetch data</h3>
+                <p id="error-message">Please try again with a different location.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('error-state').style.display='none'">Try Again</button>
+            </div>
+
+           
+            <div id="result-card" class="result-card" style="display: none;">
+                <div class="result-score" id="result-score">0</div>
+                <h3 id="score-label" style="color: white; margin-bottom: 1rem;">Solar Potential</h3>
+                <p id="recommendation" style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1rem;"></p>
+                
+                <div class="result-details">
+                    <div class="result-item">
+                        <div class="result-item-label">Solar Irradiance</div>
+                        <div class="result-item-value" id="irradiance-value">0 kWh/m²/day</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item-label">Yearly Energy</div>
+                        <div class="result-item-value" id="yearly-energy">0 kWh</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item-label">Estimated Savings</div>
+                        <div class="result-item-value" id="yearly-savings">$0</div>
+                    </div>
+                </div>
+
+                <a href="products.html" class="btn btn-secondary" style="margin-top: 2rem; display: inline-block; background: white; color: var(--primary-color);">
+                    View Recommended Panels
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <script src="js/main.js"></script>
+    <script src="js/availability.js"></script>
+</body>
+</html>
+

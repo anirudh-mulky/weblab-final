@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Solar Energy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Solar</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="availability.html">Check Availability</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        🛒 Cart
+                        <span class="cart-badge" id="cart-badge" style="display: none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section class="cart-section">
+        <div class="cart-container">
+            <h2 style="margin-bottom: 2rem;">Shopping Cart</h2>
+            
+            <div id="cart-items">
+                <div class="loading">Loading cart...</div>
+            </div>
+
+            <div id="cart-summary">
+              
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
+
