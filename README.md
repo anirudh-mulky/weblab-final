@@ -292,3 +292,45 @@ npm install
 create .env
 npm run dev
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+
+
+function updateCartUI() {
+    // Update item count
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartBadge.textContent = totalItems;
+    cartCountHeader.textContent = totalItems;
+
+    // Cart items
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<div class="empty-cart-msg">Your cart is empty.</div>';
+    } else {
+        cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <span>$${item.price} x ${item.quantity}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Calculate subtotal
+    let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    // Discount logic
+    let discount = 0;
+    if (subtotal > 1000) {
+        discount = subtotal * 0.10; // 10% discount
+    }
+
+    let finalTotal = subtotal - discount;
+
+    // Show total
+    cartTotalEl.innerHTML = `
+        <div>Subtotal: $${subtotal.toFixed(2)}</div>
+        <div>Discount: $${discount.toFixed(2)}</div>
+        <strong>Total: $${finalTotal.toFixed(2)}</strong>
+    `;
+}
