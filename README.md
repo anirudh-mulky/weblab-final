@@ -291,3 +291,4 @@ cd project
 npm install
 create .env
 npm run dev
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
