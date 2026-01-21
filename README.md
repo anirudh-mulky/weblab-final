@@ -125,4 +125,169 @@ npm run dev
 - The website works with or without MongoDB connection
 - Without MongoDB, cart operations work but don't persist between server restarts
 - All frontend pages are served through the Express server for proper CORS handling
+1️⃣ npm / node NOT FOUND
+❌ Error
+'node' is not recognized as an internal or external command
 
+✅ Fix
+
+Install Node.js LTS
+
+Reopen terminal
+
+Verify:
+
+node -v
+npm -v
+
+
+👉 Use Command Prompt or Git Bash
+
+2️⃣ node_modules Missing
+❌ Error
+Cannot find module 'express'
+
+✅ Fix
+npm install
+
+
+⚠ Never copy node_modules from home to college
+
+3️⃣ Port Already in Use (EADDRINUSE)
+❌ Error
+EADDRINUSE :::3000
+
+✅ Fix (Windows)
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+✅ Best Prevention
+
+Use backend port 5000
+
+4️⃣ .env File Missing
+❌ Error
+process.env.MONGODB_URI is undefined
+
+✅ Fix
+
+Create .env manually:
+
+PORT=5000
+MONGODB_URI=...
+
+
+⚠ .env is NOT cloned from GitHub
+
+5️⃣ MongoDB NOT Installed on College PC
+❌ Error
+MongoDB connection error
+
+✅ Fix (BEST)
+
+Use MongoDB Atlas
+
+MONGODB_URI=mongodb+srv://...
+
+🟡 Temporary Fix
+
+Let app run without DB (your code already allows this)
+
+6️⃣ Nodemon Not Working
+❌ Error
+'nodemon' is not recognized
+
+✅ Fix
+npx nodemon backend/server.js
+
+
+or install:
+
+npm install nodemon --save-dev
+
+7️⃣ Windows Firewall Blocks Node
+❌ Symptom
+
+Server starts
+
+Browser doesn’t load
+
+✅ Fix
+
+Allow Node.js through firewall
+
+Run terminal as Administrator
+
+8️⃣ Wrong Folder Opened
+❌ Error
+package.json not found
+
+✅ Fix
+cd weblab-final
+
+
+You must be where package.json exists.
+
+9️⃣ MongoDB Index Error (Already Exists)
+❌ Error
+Index already exists
+
+✅ Fix
+
+Safe to ignore
+OR wrap in try-catch (already done)
+
+🔟 Ctrl+Z Instead of Ctrl+C
+❌ Problem
+
+Port stays locked
+
+Nodemon crashes
+
+✅ Fix
+taskkill /IM node.exe /F
+
+1️⃣1️⃣ Git Clone Issues
+❌ Error
+permission denied
+
+✅ Fix
+
+Use HTTPS clone, not SSH
+
+Login to GitHub in browser first
+
+1️⃣2️⃣ Line Ending Issues (Windows)
+❌ Weird script behavior
+✅ Fix (once)
+git config --global core.autocrlf true
+
+1️⃣3️⃣ Express Server Not Starting
+❌ Error
+app.listen is not a function
+
+✅ Fix
+
+Check:
+
+const express = require('express');
+const app = express();
+
+1️⃣4️⃣ DB Is Null (getDB() returns null)
+❌ Error
+Cannot read property 'collection' of null
+
+✅ Fix
+
+Always check:
+
+const db = getDB();
+if (!db) return res.status(500).send("DB not connected");
+
+🧠 EXAM GOLDEN STRATEGY
+✅ BEST ORDER TO RUN
+git clone ...
+cd project
+npm install
+create .env
+npm run dev
